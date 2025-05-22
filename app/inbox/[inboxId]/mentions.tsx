@@ -1,7 +1,13 @@
+"use client";
 import { ChevronDown } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 
-// Function to generate consistent color from name
+//  @typescript-eslint/no-explicit-any
+interface MentionsProps {
+  onMessageSelect: (message: any) => void;
+  selectedMessage: any;
+}
+
 const getAvatarColor = (name: string) => {
   const colors = [
     "bg-red-300",
@@ -18,7 +24,6 @@ const getAvatarColor = (name: string) => {
   return colors[hash % colors.length];
 };
 
-// Dummy data
 const dummyMessages = [
   {
     name: "Tom Simone",
@@ -47,7 +52,12 @@ const dummyMessages = [
   },
 ];
 
-export default function Mentions() {
+export default function Mentions({ onMessageSelect,selectedMessage }: MentionsProps) {
+  useEffect(() => {
+    if (dummyMessages.length > 0) {
+      onMessageSelect(dummyMessages[0]);
+    }
+  }, [onMessageSelect]);
   return (
     <div className="p-4 h-full flex flex-col">
       {" "}
@@ -66,7 +76,7 @@ export default function Mentions() {
       {/* Message list container with fixed height */}
       <div
         className="mt-2 flex-1 overflow-y-auto scrollbar-hide"
-        style={{ maxHeight: "calc(100vh - 180px)" ,scrollbarWidth:"none"}}
+        style={{ maxHeight: "calc(100vh - 180px)", scrollbarWidth: "none" }}
       >
         <div className="space-y-2 pr-2">
           {" "}
@@ -74,7 +84,12 @@ export default function Mentions() {
           {dummyMessages.map((message, index) => (
             <div
               key={index}
-              className="flex items-start gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
+              className={`flex items-start gap-3 p-2 rounded-lg cursor-pointer ${
+                selectedMessage?.name === message.name
+                  ? "bg-gray-100 border-1"
+                  : "hover:bg-gray-100"
+              }`}
+              onClick={() => onMessageSelect(message)}
             >
               <div
                 className={`flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full ${getAvatarColor(
