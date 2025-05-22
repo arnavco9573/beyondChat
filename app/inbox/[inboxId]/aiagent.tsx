@@ -76,10 +76,10 @@ export default function Agent({ onAddToComposer }: AgentProps) {
         <div className="flex items-center justify-between">
           {/* Tab Buttons */}
           <div className="relative w-[200px]">
-            <TabsList className="flex w-full border-b-0 relative z-10 bg-transparent">
+            <TabsList className="flex w-full border-b-0 relative z-10 bg-transparent sm:bg-transparent">
               <TabsTrigger
                 value="details"
-                className="flex-1 border-b-2 border-transparent data-[state=active]:border-none data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:bg-gray-100 pb-5"
+                className="flex-1 border-b-2 border-transparent data-[state=active]:border-none data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:bg-gray-100 sm:bg-gray-100 pb-5"
               >
                 Details
               </TabsTrigger>
