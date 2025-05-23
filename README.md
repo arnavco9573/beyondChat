@@ -4,7 +4,7 @@ A responsive replica of Intercom's admin panel UI as shown in the demo assignmen
 
 ## 🚀 Live Demo
 
-🔗 [Click here to view the deployed site](https://your-live-site-url.com)
+🔗 [Click here to view the deployed site]((https://beyond-chat-five.vercel.app/))
 
 ---
 
